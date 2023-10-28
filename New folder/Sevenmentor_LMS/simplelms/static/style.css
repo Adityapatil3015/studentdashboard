@@ -1,0 +1,276 @@
+/* Adjusted Styles for the Blog Section */
+.blog-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 1200px; /* Adjust the maximum width as needed */
+  }
+  
+  .blog-item {
+    flex-basis: calc(50% - 1rem); /* Two items side by side with some spacing */
+    margin-bottom: 2rem;
+    border: 1px solid #ddd; /* Add a border for separation */
+    transition: transform 0.3s ease; /* Add a subtle hover effect */
+    overflow: hidden; /* Hide overflow to prevent horizontal scrollbar */
+    max-width: 100%; /* Ensure the image doesn't exceed its container */
+  }
+  
+  .blog-item:hover {
+    transform: scale(1.02);
+  }
+  
+  .blog-img {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .blog-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  /* Your existing CSS styles... */
+
+/* Styles for the upload buttons and file inputs for assignments */
+.upload-button {
+  display: block;
+  width: 90%;
+  height: 15%;
+  padding: 10px 0;
+  margin: 0px 0;
+  margin-left: 5%;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-align: center;
+  padding-left: 15px;
+}
+
+.upload-button:hover {
+  background-color: #0056b3;
+  color: rgb(255, 255, 255);
+  
+}
+
+.upload-input {
+  display: none; /* Hide the file input by default */
+}
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.left-section {
+  width: 300px; /* Fixed width for the left section */
+  background-color: #FFFFFF;
+  position: sticky;
+  top: 0;
+}
+
+.right-section {
+  flex: 1;
+  background-color: #F4F7FE;
+  overflow-y: scroll;
+  height: 100vh; /* Adjust the height based on your layout */
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.student-info {
+  text-align: center;
+}
+.student-photo {
+  max-width: 200px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+.student-name {
+  font-weight: bold;
+}
+
+/* CSS to style the option buttons */
+.option-button {
+  display: block;
+  width: 100%;
+  padding: 15px 0;
+  margin: 0px 0;
+  background-color: #FFFFFF;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-align: left;
+  padding-left: 20px;
+}
+
+.option-button:hover {
+  background-color: #0056b3;
+  color: white;
+}
+
+.upcoming-events {
+  margin-top: 20px;
+}
+.logout-link {
+  text-align: center;
+  margin-top: 20px;
+}
+.logout-link a {
+  color: #007BFF;
+  text-decoration: none;
+}
+
+.subscription-end {
+  color:rgb(138, 50, 15);
+  font-size: 20px; /* Increase font size */
+  text-align: center; /* Align text to center */
+  border-left: 2px ; /* Adjust border style */
+  border-top: 2px ;/* Adjust border style */
+  border-right: 2px ;/* Adjust border style */
+  border-bottom: 2px ;/* Adjust border style */
+  margin: 20px; /* Add some margin for spacing */
+}
+
+.subject-panels {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.subject-panel {
+  width: calc(20% - 10px); /* Adjust the width as needed */
+  background-color: #FFFFFF;
+  color: #fff;
+  border-radius: 15px;
+  padding: 10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  text-align: center;
+}
+/* Add hover effect to the subject panels */
+.subject-panel:hover {
+  background-color: rgb(197, 197, 243);
+  text-decoration: none;
+}
+.subject-name {
+  font-size: 20px;
+  color: black;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.subject-image {
+  max-width: 90%;
+  border-radius: 15px;
+  height: auto;
+  margin: 10px auto; /* Center the image */
+}
+/* Style for project images */
+.project-card img {
+max-width: 25%;
+height: auto;
+border-radius: 10px; /* Add rounded corners to the images */
+margin-right: 20px; /* Add some spacing between the image and project details */
+float: left; /* Float the image to the left to align with project details */
+margin-bottom: 30px;
+}
+
+/* Style for certificate links */
+.certificate-link {
+display: block;
+margin: 20px 0;
+text-decoration: none;
+color: #007BFF;
+}
+
+.certificate-link img {
+max-width: 100px; /* Set the maximum width for certificate images */
+height: auto;
+border: 2px solid #007BFF;
+border-radius: 5px;
+}
+
+.certificate-link span {
+display: block;
+margin-top: 10px;
+font-weight: bold;
+}
+.blog {
+margin-bottom: 20px;
+padding: 10px;
+border: 1px solid #ddd;
+border-radius: 5px;
+background-color: #fff;
+}
+/* Style for blog images */
+.blog-image {
+max-width: 150px;
+height: auto;
+float: left; /* Float the image to the left */
+margin-right: 10px; /* Add some spacing between the image and text */
+}
+
+
+.blog-title {
+font-size: 18px;
+font-weight: bold;
+margin-bottom: 5px;
+}
+
+.blog-author {
+color: #888;
+margin-bottom: 5px;
+}
+
+.blog-description {
+font-size: 14px;
+line-height: 1.5;
+}
+.certificate-panel {
+width: 70%;
+height: 80%;
+background-color: #FFFFFF;
+border-radius: 20px;
+padding: 180px;
+text-align: center;
+}
+
+.certificate-link {
+display: block;
+text-decoration: none;
+color: #007BFF;
+}
+
+.certificate-image {
+max-width: 100px;
+height: 100px;
+border: 2px solid #007BFF;
+border-radius: 5px;
+margin: 10px auto; /* Center the image */
+}
+
+.certificate-image:hover {
+opacity: 0.8; /* Add hover effect to the certificate image */
+}
+
+.certificate-link h4 {
+font-size: 24px;
+font-weight: bold;
+margin: 10px 0;
+}
+/* Other existing CSS styles... */

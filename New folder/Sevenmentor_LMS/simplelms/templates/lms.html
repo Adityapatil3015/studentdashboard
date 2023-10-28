@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS - Your Training Institute</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+   
+</head>
+<body>
+    <div class="container">
+        <div class="left-section">
+            <h2 align="center" style="color: brown;">Seven Mentor Institute</h2>
+            <div class="student-info">
+                <img class="student-photo" src="{{url_for('static',filename='images/logowhite.png')}}" alt="Student Photo"> 
+                <p class="student-name" style="font-size: large;">Hello, {{ username }}!</p>
+
+                <button class="option-button" id="my-courses-button">My Courses</button>
+                <button class="option-button" id="my-resume-button">My Resume</button>
+                <button class="option-button" id="latest-updates-button">Latest Updates</button>
+                <button class="option-button" id="my-assignments-button">My Assignments</button>
+                <button class="option-button" id="my-projects-button">Projects</button>
+                <button class="option-button" id="blogs-button">Blogs</button>
+                <button class="option-button" id="certificates-button">Certificates</button>
+            </div>
+
+            <div class="logout-link">
+                <!-- Add an id attribute to the Logout link -->
+                <a id="logout-link" href="#">Logout</a>
+            </div>
+
+            <div class="subscription-end">
+                <!-- Add an id attribute to the Logout link -->
+                <div id="countdown"><b></b></div>
+
+            </div>
+        </div>
+        
+        <div class="right-section">
+            <div id="my-courses-content" style="display: block;">
+                <!-- Content for "My Courses" section -->
+                <!-- <h2>My Courses </h2> -->
+                <!-- Add your courses here -->
+                <!-- <div class="subject-panels">
+                    <a class="subject-panel" href="#" data-drive-link="https://drive.google.com/drive/folders/10pr-ZPXNkTNuNctgd5v1GfODB3QlOG6h?usp=drive_link">
+                        <img class="subject-image" src="{{url_for('static',filename='images/pythonLogo.jpeg')}}" alt="Subject 1 Image">
+                        <p class="subject-name">Python</p>
+                    </a>
+                    <a class="subject-panel" href="#" data-drive-link="https://drive.google.com/drive/folders/10pr-ZPXNkTNuNctgd5v1GfODB3QlOG6h?usp=drive_link">
+                        <img class="subject-image" src="{{url_for('static',filename='images/sql.png')}}" alt="Subject 2 Image">
+                        <p class="subject-name">SQL</p>
+                    </a>
+                    <a class="subject-panel" href="#" data-drive-link="https://drive.google.com/drive/folders/10pr-ZPXNkTNuNctgd5v1GfODB3QlOG6h?usp=drive_link">
+                        <img class="subject-image" src="{{url_for('static',filename='images/probStat.png')}}" alt="Subject 3 Image">
+                        <p class="subject-name">Probability and Statistics</p>
+                    </a>
+                    <a class="subject-panel" href="#" data-drive-link="https://drive.google.com/drive/folders/10pr-ZPXNkTNuNctgd5v1GfODB3QlOG6h?usp=drive_link">
+                        <img class="subject-image" src="{{url_for('static',filename='images/ds.png')}}" alt="Subject 4 Image">
+                        <p class="subject-name">Machine Learning</p>
+                    </a>
+                    <a class="subject-panel" href="#" data-drive-link="https://drive.google.com/drive/folders/10pr-ZPXNkTNuNctgd5v1GfODB3QlOG6h?usp=drive_link">
+                        <img class="subject-image"  src="{{url_for('static',filename='images/pro1.jpg')}}" alt="Subject 4 Image">
+                        <p class="subject-name">Artificial Intelligence</p>
+                    </a>
+                </div> -->
+
+
+                <h2>My Courses </h2>
+                <!-- Add your courses here -->
+                <div class="subject-panels">
+                    {% for course in user_courses %}
+                        <a class="subject-panel" href='#' data-drive-link="https://drive.google.com/drive/folders/10pr-ZPXNkTNuNctgd5v1GfODB3QlOG6h?usp=drive_link" target="_blank">
+                            <img class="subject-image" src="{{url_for('static',filename='images/pro1.jpg')}}" alt="{{ course.name }} Image">
+                            <p class="subject-name">{{ course.name }}</p>
+                        </a>
+                    {% endfor %}               
+                </div>
+            </div>
+            <div id="resume-content" style="display: none;">
+        <h2>My Resume</h2>
+        <p>Upload your resume here:</p>
+        <input type="file" id="resume-upload" accept=".pdf, .doc, .docx">
+        <button id="upload-button">Upload</button>
+        <div id="resume-preview" style="display: none;">
+            <h3>Your Resume</h3>
+            <iframe id="resume-iframe" style="width: 100%; height: 600px;"></iframe>
+        </div>
+    </div>
+            <div id="latest-updates-content" style="display: none;">
+                <!-- Content for "Latest Updates" section -->
+                <h2>Latest Updates : </h2>
+                <!-- Add your updates here -->
+                <ul id="updates-list" class="updates-list">
+                    <li>
+                        <h3>Web Development Workshop</h3>
+                        <p style="color: red;">Date: October 20, 2023</p>
+                        <p><b>Description: </b>Join our upcoming webinar on web development, where you'll have the opportunity to dive deep into the world of web design and programming. <p>This comprehensive workshop will cover front-end and back-end development, responsive design, JavaScript frameworks, and much more.</p><p> Whether you're a beginner or an experienced developer, this workshop offers valuable insights and practical tips. Our expert speakers will guide you through hands-on exercises and real-world examples. Don't miss this chance to enhance your web development skills!</p>
+                    </li>
+                    <li>
+                        <h3>Data Science Masterclass</h3>
+                        <p style="color: red;">Date: October 25, 2023</p>
+                        <p><b>Description: </b>Don't miss our data science masterclass featuring industry experts and leading data scientists.</p><p> This intensive session will explore advanced data analysis techniques, machine learning algorithms, data visualization, and data-driven decision-making.</p><p> If you're passionate about data and analytics, this masterclass is perfect for you. Get ready to gain practical insights, work on real-world data projects, and interact with professionals in the field.</p><p> Reserve your spot today for this exceptional learning opportunity!</p>
+                    </li>
+                    <!-- Add more updates as needed -->
+                </ul>
+            </div>
+            <div id="my-assignments-content" style="display: none;">
+                <!-- Content for "My Assignments" section -->
+                <h2>My Assignments</h2>
+                <p>Select a subject to upload your assignment:</p>
+                
+                <div class="subject-panels">
+                    <!-- For each subject panel -->
+                    <div class="subject-panel" data-drive-link="https://drive.google.com/drive/folders/10pr-ZPXNkTNuNctgd5v1GfODB3QlOG6h?usp=drive_link">
+                        <img class="subject-image"  src="{{url_for('static',filename='images/myasssql.jpeg')}}" alt="Subject 1 Image">
+                        <p class="subject-name">SQL</p>
+                        <!-- Add an "Upload" button with a unique ID for each subject -->
+                        <button class="upload-button" data-subject="SQL">Upload Assignment</button>
+                    </div>
+                    <div class="subject-panel" data-drive-link="https://drive.google.com/drive/folders/10pr-ZPXNkTNuNctgd5v1GfODB3QlOG6h?usp=drive_link">
+                        <img class="subject-image"  src="{{url_for('static',filename='images/myasspy.jpeg')}}" alt="Subject 1 Image">
+                        <p class="subject-name">Python</p>
+                        <!-- Add an "Upload" button with a unique ID for each subject -->
+                        <button class="upload-button" data-subject="Python">Upload Assignment</button>
+                    </div>
+                    <div class="subject-panel" data-drive-link="https://drive.google.com/drive/folders/10pr-ZPXNkTNuNctgd5v1GfODB3QlOG6h?usp=drive_link">
+                        <img class="subject-image"  src="{{url_for('static',filename='images/myassprob.jpeg')}}" alt="Subject 1 Image">
+                        <p class="subject-name">Probability and Statistics</p>
+                        <!-- Add an "Upload" button with a unique ID for each subject -->
+                        <button class="upload-button" data-subject="Probability and Statistics">Upload Assignment</button>
+                    </div>
+                    <div class="subject-panel" data-drive-link="https://drive.google.com/drive/folders/10pr-ZPXNkTNuNctgd5v1GfODB3QlOG6h?usp=drive_link">
+                        <img class="subject-image"  src="{{url_for('static',filename='images/myassml.jpeg')}}" alt="Subject 1 Image">
+                        <p class="subject-name">Machine Learning</p>
+                        <!-- Add an "Upload" button with a unique ID for each subject -->
+                        <button class="upload-button" data-subject="Machine Learning">Upload Assignment</button>
+                    </div>
+                    <div class="subject-panel" data-drive-link="https://drive.google.com/drive/folders/10pr-ZPXNkTNuNctgd5v1GfODB3QlOG6h?usp=drive_link">
+                        <img class="subject-image"  src="{{url_for('static',filename='images/myassai.jpeg')}}" alt="Subject 1 Image">
+                        <p class="subject-name">Artificial Intelligence</p>
+                        <!-- Add an "Upload" button with a unique ID for each subject -->
+                        <button class="upload-button" data-subject="Artificial Intelligence">Upload Assignment</button>
+                    </div>
+                    <!-- Repeat the above structure for other subjects -->
+                </div>
+            </div>
+    
+          
+            <div id="my-projects-content" style="display: none;">
+                <h2>Projects</h2>
+                <p>Welcome to your projects dashboard. Here are the projects you are currently working on:</p>
+            
+                <div class="project-card">
+                    <img  src="{{url_for('static',filename='images/stocks.jpeg')}}" alt="Project 1 Image">
+                    <div class="project-details">
+                        <h3>Project 1: Stock Prediction</h3>
+                        <p><b>Description:</b> There have been surge in people investing in stock from last few years and specially when people can invest from our their own smartphone, they have started understanding the importance of investment whether its stocks, real estate or metals.
+
+                            Lots of people who do not know much about how stocks behave or at what time they should buy/sell a particular stock keeping the risk involved in mind, a Recommendation model can help them to choose the right stock.
+                            
+                            A Model which can recommend users what to buy or what to sell in real time is our Business Objective.</p>
+                        <a href="https://github.com/Nishesh2115/Stock-Prediction-Project" target="_blank" style="color: brown;">Project Details</a>
+                    </div>
+                </div>
+            
+                <div class="project-card">
+                    <div style="clear: both;"></div> <!-- Add a clearing element to start the new line -->
+                    <img  src="{{url_for('static',filename='images/hand.jpeg')}}" alt="Project 2 Image">
+                    <div class="project-details">
+                        <h3>Project 2: Hand Gesture Recognition</h3>
+                        <p><b>Description:</b>The Hand Gesture Recognition project aims to develop a system that can interpret and respond to hand gestures made by users. The system uses a camera or other image-capturing device to capture the movements and positions of the user's hand and fingers. These gestures are then analyzed and classified by machine learning algorithms to perform specific actions or trigger responses.</p>
+                        <a href="https://github.com/Nishesh2115/Hand-Gesture-Recognition" target="_blank" style="color: brown;">Project Details</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div style="clear: both;"></div> <!-- Add a clearing element to start the new line -->
+                    <img  src="{{url_for('static',filename='images/webscrape.jpeg')}}" alt="Project 2 Image">
+                    <div class="project-details">
+                        <h3>Project 3: Web Scraping</h3>
+                        <p><b>Description:</b>In this project, we are scraping from the very famous Job Portal which is Indeed.com. The idea is very simple to scrape the jobs, job location, salaries and job description into a csv file for every possible job.</p>
+                        <a href="https://github.com/Nishesh2115/WEB_SCRAPING-INDEED.COM-" target="_blank" style="color: brown;">Project Details</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div style="clear: both;"></div> <!-- Add a clearing element to start the new line -->
+                    <img  src="{{url_for('static',filename='images/digital.jpeg')}}" alt="Project 2 Image">
+                    <div class="project-details">
+                        <h3>Project 4: Attribute Marketing</h3>
+                        <p><b>Description:</b>A Marketing Machine Learning Project focuses on leveraging machine learning techniques to enhance marketing strategies and improve the overall effectiveness of marketing campaigns. Machine learning can analyze large datasets, extract insights, and predict outcomes, allowing marketers to make data-driven decisions and deliver more personalized and targeted campaigns.</p>
+                        <a href="https://github.com/Nishesh2115/Attribute_Marketing-Marketing_Mix_Models" target="_blank" style="color: brown;">Project Details</a>
+                    </div>
+                </div>
+            
+                <!-- Add more project cards as needed -->
+            </div>
+            <div id="blogs-content" style="display: none;">
+                <!-- Content for "blogs" section -->
+                <h2>Blogs</h2>
+                <!-- Add your blogs here -->
+                    <div class="blog">
+                        <img  src="{{url_for('static',filename='images/ds.png')}}" alt="Blog 1 Image" class="blog-image">
+                        <h3 class="blog-title"><a href="https://medium.com/@nishesh.kumar">Can you Crack this Data-Science Interview?</a></h3>
+                        <p class="blog-author">Author: Nishesh Gogia</p>
+                        <p class="blog-description">
+                        In the competitive world of data science, landing your dream job often begins with acing the interview process. But are you well-prepared to tackle the challenges that lie ahead? In our latest blog, we dive deep into the art of cracking the data science interview.
+                        We'll walk you through a comprehensive guide, covering everything from essential technical skills to effective interview strategies. Discover the most frequently asked data science interview questions, and learn how to craft well-thought-out answers that showcase your expertise.
+                    </p>
+                    </div>
+                    <div class="blog">
+                        <img  src="{{url_for('static',filename='images/leetcode.jpg')}}" alt="Blog 2 Image" class="blog-image">
+                        <h3 class="blog-title"><a href="https://medium.com/@chingisoinar/did-leetcode-help-me-get-a-job-in-ai-ml-2023-fd630fe7ea0f">Did Leetcode Help Me Get a Job in AI/ML (2023)?</a></h3>
+                        <p class="blog-author">Author: Jane Smith</p>
+                        <p class="blog-description">
+                        As the demand for talented professionals in artificial intelligence (AI) and machine learning (ML) continues to soar, aspiring data scientists and engineers often wonder: Is mastering LeetCode, the renowned coding platform, the key to landing a job in AI/ML in 2023?
+                        In our latest blog post, we provide an in-depth analysis of the role LeetCode played in our journey to securing AI/ML positions in this competitive job market. We share personal experiences, insights, and statistics to answer the burning question: Does LeetCode really help you get hired in AI/ML roles?
+                        Join us as we explore the advantages and limitations of LeetCode, delving into its relevance in interviews for AI/ML positions. We break down common AI/ML interview topics and assess how well LeetCode prepares you for the technical challenges posed by top-tier companies.
+                        </p>
+                    </div>
+                    <div class="blog">
+                        <img  src="{{url_for('static',filename='images/tech.jpg')}}" alt="Blog 3 Image" class="blog-image">
+                        <h3 class="blog-title"><a href="https://medium.com/analytics-vidhya/traditional-programming-vs-machine-learning-programming-85b8bd428e9d">Traditional Programming VS Machine Learning Programming</a></h3>
+                        <p class="blog-author">Author: Nishesh Gogia</p>
+                        <p class="blog-description">
+                        As the demand for talented professionals in artificial intelligence (AI) and machine learning (ML) continues to soar, aspiring data scientists and engineers often wonder: Is mastering LeetCode, the renowned coding platform, the key to landing a job in AI/ML in 2023?
+                        In our latest blog post, we provide an in-depth analysis of the role LeetCode played in our journey to securing AI/ML positions in this competitive job market. We share personal experiences, insights, and statistics to answer the burning question: Does LeetCode really help you get hired in AI/ML roles?
+                        Join us as we explore the advantages and limitations of LeetCode, delving into its relevance in interviews for AI/ML positions. We break down common AI/ML interview topics and assess how well LeetCode prepares you for the technical challenges posed by top-tier companies.
+                        </p>
+                    </div>
+
+                    <div class="blog">
+                        <img  src="{{url_for('static',filename='images/4thblog.jpeg')}}" alt="Blog 3 Image" class="blog-image">
+                        <h3 class="blog-title"><a href="https://towardsdatascience.com/making-mistakes-as-an-analyst-and-strategies-to-deal-with-them-b4d486d7c4dd">Making Mistakes as an Analyst — and Strategies to Deal with Them</a></h3>
+                        <p class="blog-author">Author: Dennis Meisner</p>
+                        <p class="blog-description">
+                            Analysts work in a very complex environment with a high degree of freedom, so there are many opportunities to make a mistake or draw wrong conclusions.Producing a faulty analysis and guiding my organization in the wrong direction based on my results has been one of my greatest fears since starting out as an analyst. And to be honest, being exposed and called out on my mess even more so.
+                        </p>
+                    </div>
+                    <!-- Add more blog entries as needed -->
+                </div>
+            <div id="certificates-content" style="display: none;">
+                    <!-- Content for "Certificates" section -->
+                    <h2 style="text-align: left;"> Certificates :</h2>
+             
+                    <!-- Add your certificates here -->
+                    <div class="certificate-panel">
+                        <a class="certificate-link" target="_blank">
+                            <p>Congratulations on completing your courses! You can collect your certificates for your subjects:</p>
+                            <img class="certificate-image"  src="{{url_for('static',filename='images/favicon.ico')}}" alt="Certificate Image">
+                            <h4>Get Your Certificate</h4>
+                            <h1> <a  target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSdtWRcSWUmK3znCYckEG1UxHPgz_Cf0qDIfmJEGRyKHkE7swA/viewform?usp=sf_link"
+                                rel="noopener noreferrer">CERTIFICATE</a></h1>
+                            </a>
+                                <head>
+                                    <meta charset="UTF-8">
+                                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                    <title></title>
+                                    <link rel="stylesheet" href="style.css">
+        
+                                </head>  
+                        </a>
+                    </div>
+            </div>    
+            
+
+        </div>
+    </div>
+    <script>
+
+
+// Define the date of admission and validity period in milliseconds
+var admissionDate = new Date('2023-10-27').getTime();
+var validityPeriod = 365 * 24 * 60 * 60 * 1000; // 1 year in milliseconds
+
+// Function to update the countdown
+function updateCountdown() {
+    var now = new Date().getTime();
+    var remainingTime = admissionDate + validityPeriod - now;
+
+    if (remainingTime < 0) {
+        document.getElementById('countdown').innerHTML = "Subscription Expired";
+        // Disable login form or redirect to a different page
+        // Add your code here to handle expired subscription
+    } else {
+        var days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+       
+        document.getElementById('countdown').innerHTML = "Days remaining:  " + days + " days ";
+        setTimeout(updateCountdown, 1000); // Update every second
+    }
+}
+
+// Call the function to start the countdown
+updateCountdown();
+        // Get the Logout link by its id
+        const logoutLink = document.getElementById("logout-link");
+
+// Add a click event listener to the Logout link
+logoutLink.addEventListener("click", function (event) {
+    // Prevent the default link behavior (don't navigate immediately)
+    event.preventDefault();
+
+    // Show a confirmation dialog
+    const confirmLogout = window.confirm("Are you sure you want to logout?");
+
+    // If the user confirms the logout, send a request to the /logout route
+    if (confirmLogout) {
+        fetch('/logout')
+            .then(response => response.text())
+            .then(data => {
+                // Redirect to the login page
+                window.location.href = '/';
+            });
+    }
+    // If the user cancels, do nothing
+});
+
+
+// Get all subject panels by class name
+const subjectPanels = document.querySelectorAll(".subject-panel");
+
+// Add a click event listener to each subject panel
+subjectPanels.forEach(function (panel) {
+    panel.addEventListener("click", function (event) {
+        // Prevent the default link behavior (don't navigate immediately)
+        event.preventDefault();
+
+        // Get the Google Drive link from the data attribute
+        const driveLink = panel.getAttribute("data-drive-link");
+
+        // Open the Google Drive link in a new tab
+        window.open(driveLink, "_blank");
+    });
+});
+
+// Get the buttons and content sections by their ids
+const buttons = {
+    "my-courses-button": "my-courses-content",
+    "latest-updates-button": "latest-updates-content",
+    "my-projects-button": "my-projects-content",
+    "blogs-button": "blogs-content",
+    "certificates-button": "certificates-content",
+    "my-resume-button": "resume-content",
+    "my-assignments-button": "my-assignments-content",
+};
+
+for (const buttonId in buttons) {
+    const button = document.getElementById(buttonId);
+    const contentId = buttons[buttonId];
+
+    if (button && contentId) {
+        button.addEventListener("click", function () {
+            showContent(contentId);
+        });
+    }
+}
+
+// Get the My Resume button and resume content by their ids
+const resumeUploadInput = document.getElementById("resume-upload");
+const uploadButton = document.getElementById("upload-button");
+const resumePreview = document.getElementById("resume-preview");
+const resumeIframe = document.getElementById("resume-iframe");
+
+
+// Add an event listener to the upload button
+if (resumeUploadInput && uploadButton) {
+    uploadButton.addEventListener("click", function () {
+        const file = resumeUploadInput.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                // Save the uploaded resume to local storage
+                localStorage.setItem("uploadedResume", e.target.result);
+
+                resumeIframe.src = e.target.result;
+                resumePreview.style.display = "block";
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+}
+
+// Load the uploaded resume from local storage, if available
+window.addEventListener("load", function () {
+    const uploadedResume = localStorage.getItem("uploadedResume");
+    if (uploadedResume) {
+        resumeIframe.src = uploadedResume;
+        resumePreview.style.display = "block";
+    }
+});
+
+// Function to show the specified content and hide others
+function showContent(contentId) {
+    for (const buttonId in buttons) {
+        const content = document.getElementById(buttons[buttonId]);
+        if (content) {
+            content.style.display = "none";
+        }
+    }
+
+    // Show the specified content
+    document.getElementById(contentId).style.display = "block";
+}
+
+// Add an event listener for the "My Assignments" button
+// const myAssignmentsButton = document.getElementById("my-assignments-button");
+// myAssignmentsButton.addEventListener("click", function () {
+//     showContent("my-assignments-content");
+// });
+
+// Get the upload buttons for assignments by their IDs
+// const uploadAssignment1Button = document.getElementById("upload-assignment-1");
+// const uploadAssignment2Button = document.getElementById("upload-assignment-2");
+// const uploadAssignment3Button = document.getElementById("upload-assignment-3");
+// const uploadAssignment4Button = document.getElementById("upload-assignment-4");
+// const uploadAssignment5Button = document.getElementById("upload-assignment-5");
+
+
+// Add event listeners to handle assignment uploads
+// if (uploadAssignment1Button) {
+//     uploadAssignment1Button.addEventListener("click", function () {
+//         // Implement assignment upload logic for Assignment 1
+//     });
+// }
+
+// if (uploadAssignment2Button) {
+//     uploadAssignment2Button.addEventListener("click", function () {
+//         // Implement assignment upload logic for Assignment 2
+//     });
+// }
+
+// if (uploadAssignment3Button) {
+//     uploadAssignment3Button.addEventListener("click", function () {
+//         // Implement assignment upload logic for Assignment 3
+//     });
+// }
+
+// if (uploadAssignment4Button) {
+//     uploadAssignment4Button.addEventListener("click", function () {
+//         // Implement assignment upload logic for Assignment 4
+//     });
+// }
+
+// if (uploadAssignment5Button) {
+//     uploadAssignment5Button.addEventListener("click", function () {
+//         // Implement assignment upload logic for Assignment 5
+//     });
+// }
+
+// Function to show the specified content and hide others
+function showContent(contentId) {
+    for (const buttonId in buttons) {
+        const content = document.getElementById(buttons[buttonId]);
+        if (content) {
+            content.style.display = "none";
+        }
+    }
+
+    // Show the specified content
+    document.getElementById(contentId).style.display = "block";
+}
+
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html
